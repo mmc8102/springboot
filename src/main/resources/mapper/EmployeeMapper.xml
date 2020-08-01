@@ -1,0 +1,74 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="cn.mmc8102.springboot.mapper.EmployeeMapper">
+
+    <resultMap type="cn.mmc8102.springboot.domain.Employee" id="EmployeeMap">
+        <result property="id" column="id" jdbcType="INTEGER"/>
+        <result property="username" column="username" jdbcType="VARCHAR"/>
+        <result property="realname" column="realname" jdbcType="VARCHAR"/>
+        <result property="password" column="password" jdbcType="VARCHAR"/>
+        <result property="tel" column="tel" jdbcType="VARCHAR"/>
+        <result property="email" column="email" jdbcType="VARCHAR"/>
+        <result property="deptId" column="dept_id" jdbcType="INTEGER"/>
+        <result property="inputtime" column="inputtime" jdbcType="TIMESTAMP"/>
+        <result property="state" column="state" jdbcType="INTEGER"/>
+        <result property="admin" column="admin" jdbcType="INTEGER"/>
+    </resultMap>
+
+    <!--新增所有列-->
+    <insert id="insert" keyProperty="id" useGeneratedKeys="true">
+        insert into test.employee(username, realname, password, tel, email, dept_id, inputtime, state, admin)
+        values (#{username}, #{realname}, #{password}, #{tel}, #{email}, #{deptId}, #{inputtime}, #{state}, #{admin})
+    </insert>
+
+    <!--通过主键修改数据-->
+    <update id="update">
+        update test.employee
+        <set>
+            <if test="username != null and username != ''">
+                username = #{username},
+            </if>
+            <if test="realname != null and realname != ''">
+                realname = #{realname},
+            </if>
+            <if test="password != null and password != ''">
+                password = #{password},
+            </if>
+            <if test="tel != null and tel != ''">
+                tel = #{tel},
+            </if>
+            <if test="email != null and email != ''">
+                email = #{email},
+            </if>
+            <if test="deptId != null">
+                dept_id = #{deptId},
+            </if>
+            <if test="inputtime != null">
+                inputtime = #{inputtime},
+            </if>
+            <if test="state != null">
+                state = #{state},
+            </if>
+            <if test="admin != null">
+                admin = #{admin},
+            </if>
+        </set>
+        where id = #{id}
+    </update>
+
+    <!--通过主键删除-->
+    <delete id="deleteById">
+        delete from test.employee where id = #{id}
+    </delete>
+
+    <!--查询单个-->
+    <select id="queryById" resultMap="EmployeeMap">
+        select id, username, realname, password, tel, email, dept_id, inputtime, state, admin        from test.employee
+        where id = #{id}
+    </select>
+
+    <!--查询列表-->
+    <select id="list" resultMap="EmployeeMap">
+        select id, username, realname, password, tel, email, dept_id, inputtime, state, admin        from test.employee
+    </select>
+</mapper>
