@@ -1,6 +1,6 @@
 package cn.mmc8102.springboot.util;
 
-import cn.mmc8102.blog.domain.Logininfo;
+import cn.mmc8102.springboot.domain.Employee;
 import org.springframework.web.context.request.RequestContextHolder;
 import org.springframework.web.context.request.ServletRequestAttributes;
 
@@ -22,7 +22,7 @@ public class UserContext {
 		return ((ServletRequestAttributes)RequestContextHolder.getRequestAttributes()).getRequest().getSession();
 	}
 	
-	public static void setCurrent(Logininfo current) {
+	public static void setCurrent(Employee current) {
 		if(current == null) {
 			getSession().invalidate();
 		}else {
@@ -30,8 +30,8 @@ public class UserContext {
 		}
 	}
 	
-	public static Logininfo getCurrent() {
-		return (Logininfo) getSession().getAttribute(USER_IN_SESSION);
+	public static Employee getCurrent() {
+		return (Employee) getSession().getAttribute(USER_IN_SESSION);
 	}
 	
 }

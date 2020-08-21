@@ -53,7 +53,7 @@ public class MD5 {
 	}
 
 	public static String encode(String s) {
-		cn.mmc8102.blog.util.MD5 m = new cn.mmc8102.blog.util.MD5();
+		MD5 m = new MD5();
 		return m.getMD5ofStr(s);
 	}
 
@@ -278,8 +278,5 @@ public class MD5 {
 		} else
 			i = 0;
 		md5Memcpy(buffer, inbuf, index, i, inputLen - i);
-	}
-	public static void main(String[] args) {
-		System.out.println(cn.mmc8102.blog.util.MD5.encode("1"));
 	}
 }

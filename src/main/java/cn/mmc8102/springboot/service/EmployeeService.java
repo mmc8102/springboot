@@ -1,6 +1,8 @@
 package cn.mmc8102.springboot.service;
 
+import cn.mmc8102.springboot.common.ApiResponse;
 import cn.mmc8102.springboot.domain.Employee;
+
 import java.util.List;
 
 /**
@@ -44,4 +46,5 @@ public interface EmployeeService {
      */
     List<Employee> list();
 
+    ApiResponse add(String paramsJson);
 }

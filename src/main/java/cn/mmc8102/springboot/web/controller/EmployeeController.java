@@ -1,10 +1,13 @@
 package cn.mmc8102.springboot.web.controller;
 
+import cn.mmc8102.springboot.common.ApiResponse;
 import cn.mmc8102.springboot.domain.Employee;
 import cn.mmc8102.springboot.service.EmployeeService;
-import org.springframework.web.bind.annotation.*;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.ResponseBody;
 
 /**
  * Employee相关控制器
@@ -24,8 +27,15 @@ public class EmployeeController {
      * @return 单条数据
      */
     @GetMapping("get")
+    @ResponseBody
     public Employee get(Long id) {
+        System.out.println("1111");
         return this.employeeService.get(id);
     }
 
+    @RequestMapping("add")
+    @ResponseBody
+    public ApiResponse add(String paramsJson){
+        return employeeService.add(paramsJson);
+    }
 }

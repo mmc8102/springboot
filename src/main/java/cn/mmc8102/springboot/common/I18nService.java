@@ -1,5 +1,6 @@
 package cn.mmc8102.springboot.common;
 
+import cn.mmc8102.springboot.util.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.MessageSource;
 import org.springframework.context.i18n.LocaleContextHolder;
@@ -23,7 +24,7 @@ public class I18nService {
      * @param key properties里的key
      * @return
      */
-    public  String lang(String key){
+    public String lang(String key){
         return this.lang(key,new Object[]{});
     }
 
@@ -100,6 +101,10 @@ public class I18nService {
      * @return
      */
     public String lang(String key,Object[]args,String defaultMessage,Locale locale){
+        if(messageSource == null){
+            messageSource = BeanUtils.getBean(MessageSource.class);
+        }
+        String message = messageSource.getMessage(key, args, defaultMessage, locale);
         return messageSource.getMessage(key,args, defaultMessage,locale);
     }
 }

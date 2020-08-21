@@ -35,7 +35,8 @@ public class GlobalExceptionHandler {
             responseEnum = ApiResponseEnum.UNKNOW_ERROR;
         }
 
-        return createResponse(responseEnum, e.getArgs());
+        ApiResponse apiResponse = new ApiResponse(responseEnum, e.getArgs());
+        return new ApiResponse(responseEnum, e.getArgs());
     }
 
     /**
@@ -46,7 +47,7 @@ public class GlobalExceptionHandler {
     @ExceptionHandler(HttpMessageConversionException.class)
     public ApiResponse handleException(HttpMessageConversionException e){
         log.error("handleRuntimeException: happen a message convert exception. ", e);
-        return createResponse(ApiResponseEnum.UNKNOW_ERROR, null);
+        return new ApiResponse(ApiResponseEnum.UNKNOW_ERROR);
     }
 
     /**
@@ -57,7 +58,7 @@ public class GlobalExceptionHandler {
     @ExceptionHandler(Exception.class)
     public ApiResponse handleException(Exception e){
         log.error("handleRuntimeException: happen an unknow exception. ", e);
-        return createResponse(ApiResponseEnum.UNKNOW_ERROR, null);
+        return new ApiResponse(ApiResponseEnum.UNKNOW_ERROR);
     }
 
     /**
@@ -68,12 +69,7 @@ public class GlobalExceptionHandler {
     @ExceptionHandler(RuntimeException.class)
     public ApiResponse handleRuntimeException(RuntimeException e){
         log.error("handleRuntimeException: happen a RuntimeException. ", e);
-        return createResponse(ApiResponseEnum.UNKNOW_ERROR, null);
+        return new ApiResponse(ApiResponseEnum.UNKNOW_ERROR);
     }
 
-    private ApiResponse createResponse(ApiResponseEnum responseEnum, Object[] args) {
-        String msg = i18nService.lang(responseEnum.getKey(), args);
-        HeaderStatus headerStatus = new HeaderStatus(responseEnum.getCode(), msg);
-        return new ApiResponse(headerStatus);
-    }
 }
