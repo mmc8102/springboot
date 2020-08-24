@@ -29,7 +29,6 @@ public class EmployeeController {
     @GetMapping("get")
     @ResponseBody
     public Employee get(Long id) {
-        System.out.println("1111");
         return this.employeeService.get(id);
     }
 

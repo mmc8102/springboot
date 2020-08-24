@@ -20,7 +20,7 @@ public class TemplateValidate {
     /**
      * 长度
      */
-    private String length;
+    private Integer length;
     /**
      * 正则验证
      */

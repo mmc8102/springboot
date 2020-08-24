@@ -94,17 +94,21 @@ public class EmployeeServiceImpl implements EmployeeService {
                     String key = entry.getKey();
                     Object value = entry.getValue();
                     TemplateValidate templateValidate = gson.fromJson(templateJsonObject.get(key), TemplateValidate.class);
-                    //判断是否为空
-                    if("true".equals(templateValidate.getNotNull())){
-                        if(value == null || StringUtils.isBlank(String.valueOf(value))){
-                            throw new SystemException(ApiResponseEnum.PARAM_EXCEPTION);
+                    if(templateValidate != null){
+                        //判断是否为空
+                        if("true".equals(templateValidate.getNotNull())){
+                            if(value == null || StringUtils.isBlank(String.valueOf(value))){
+                                throw new SystemException(ApiResponseEnum.PARAM_EXCEPTION);
+                            }
                         }
+                        //判断长度是否超过规定值
+                        if(templateValidate.getLength() > 0){
+                            if(((String) value).length() < templateValidate.getLength()){
+                                throw new SystemException(ApiResponseEnum.PARAM_EXCEPTION);
+                            }
+                        }
+                        //判断格式是否正确
                     }
-                    //判断长度是否超过规定值
-                    if(((String) value).length() < Integer.valueOf(templateValidate.getLength())){
-                        throw new SystemException(ApiResponseEnum.PARAM_EXCEPTION);
-                    }
-                    //判断格式是否正确
                 }
             }
         }
