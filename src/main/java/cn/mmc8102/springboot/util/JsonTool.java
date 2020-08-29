@@ -12,12 +12,12 @@ import java.util.List;
 /**
  * @author wangli
  * @Date: 2020/8/21 20:20
- * jack处理json相关的工具类
+ * jackson处理json相关的工具类
  */
 @Slf4j
-public class JsonUtils {
+public class JsonTool {
     public static final ObjectMapper mapper = new ObjectMapper();
-    private JsonUtils(){}
+    private JsonTool(){}
     /**
      * 对象转换为json字符串
      * @param obj

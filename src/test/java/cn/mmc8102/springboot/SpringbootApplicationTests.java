@@ -2,7 +2,7 @@ package cn.mmc8102.springboot;
 
 import cn.mmc8102.springboot.domain.Employee;
 import cn.mmc8102.springboot.mapper.SapTemplateValidationMapper;
-import cn.mmc8102.springboot.util.JsonUtils;
+import cn.mmc8102.springboot.util.JsonTool;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 
@@ -47,11 +47,11 @@ class SpringbootApplicationTests {
         list.add(e1);
         list.add(e2);
 
-        String json = JsonUtils.toJson(list);
-        String mapJson = JsonUtils.toJson(map);
-        Employee employee = JsonUtils.toObject(mapJson, Employee.class);
-        Map map3 = JsonUtils.toObject(mapJson, Map.class);
-        List<Employee> employeeList = JsonUtils.toList(json);
+        String json = JsonTool.toJson(list);
+        String mapJson = JsonTool.toJson(map);
+        Employee employee = JsonTool.toObject(mapJson, Employee.class);
+        Map map3 = JsonTool.toObject(mapJson, Map.class);
+        List<Employee> employeeList = JsonTool.toList(json);
         System.out.println();
     }
 }
