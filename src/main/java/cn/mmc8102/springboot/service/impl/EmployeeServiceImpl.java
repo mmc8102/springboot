@@ -102,7 +102,7 @@ public class EmployeeServiceImpl implements EmployeeService {
                             }
                         }
                         //判断长度是否超过规定值
-                        if(templateValidate.getLength() > 0){
+                        if(templateValidate.getLength() != null){
                             if(((String) value).length() < templateValidate.getLength()){
                                 throw new SystemException(ApiResponseEnum.PARAM_EXCEPTION);
                             }
