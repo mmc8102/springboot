@@ -2,7 +2,7 @@ package cn.mmc8102.springboot.web.controller;
 
 import cn.mmc8102.springboot.common.ApiResponse;
 import cn.mmc8102.springboot.domain.Employee;
-import cn.mmc8102.springboot.service.EmployeeService;
+import cn.mmc8102.springboot.service.IEmployeeService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -19,7 +19,7 @@ import org.springframework.web.bind.annotation.ResponseBody;
 public class EmployeeController {
    
     @Autowired
-    private EmployeeService employeeService;
+    private IEmployeeService employeeService;
 
     /**
      * 查询单条数据

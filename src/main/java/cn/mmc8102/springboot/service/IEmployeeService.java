@@ -10,7 +10,7 @@ import java.util.List;
  * @author wangli
  * @since 2020-06-18 12:16:14
  */
-public interface EmployeeService {
+public interface IEmployeeService {
 
     /**
      * 新增数据

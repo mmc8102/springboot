@@ -7,7 +7,7 @@ import cn.mmc8102.springboot.domain.Employee;
 import cn.mmc8102.springboot.domain.TemplateValidate;
 import cn.mmc8102.springboot.mapper.EmployeeMapper;
 import cn.mmc8102.springboot.mapper.SapTemplateValidationMapper;
-import cn.mmc8102.springboot.service.EmployeeService;
+import cn.mmc8102.springboot.service.IEmployeeService;
 import com.google.gson.Gson;
 import com.google.gson.JsonObject;
 import org.apache.commons.lang3.StringUtils;
@@ -20,7 +20,7 @@ import java.util.Map;
 import java.util.Set;
 
 @Service
-public class EmployeeServiceImpl implements EmployeeService {
+public class EmployeeServiceImpl implements IEmployeeService {
     @Autowired
     private EmployeeMapper employeeMapper;
     @Autowired
@@ -66,6 +66,7 @@ public class EmployeeServiceImpl implements EmployeeService {
             //保存
             employeeMapper.insert(employee);
             //
+
             return new ApiResponse();
         }
         return new ApiResponse(ApiResponseEnum.PARAM_EXCEPTION);

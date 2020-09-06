@@ -35,10 +35,16 @@ public class BeanConfig {
         return messageSource;
     }
 
+    /**
+     * 配置spring cache cacheManager
+     * @param connectionFactory
+     * @return
+     */
     @Bean
     public RedisCacheManager cacheManager(RedisConnectionFactory connectionFactory) {
         //默认1
         RedisCacheConfiguration config = RedisCacheConfiguration.defaultCacheConfig()
+                //配置默认失效时间10分钟
                 .entryTtl(Duration.ofMinutes(10))
                 .serializeKeysWith(RedisSerializationContext.SerializationPair.fromSerializer(new StringRedisSerializer()))
                 .serializeValuesWith(RedisSerializationContext.SerializationPair.fromSerializer(new GenericJackson2JsonRedisSerializer()))
