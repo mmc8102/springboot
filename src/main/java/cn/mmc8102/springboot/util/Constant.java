@@ -2,7 +2,7 @@ package cn.mmc8102.springboot.util;
 
 /**
  * 系统中的常量
- * @author 16282
+ * @author wangli
  *
  */
 public class Constant {

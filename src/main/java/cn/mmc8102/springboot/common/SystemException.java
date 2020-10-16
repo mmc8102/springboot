@@ -5,7 +5,7 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 
 /**
- * @author 16282
+ * @author wangli
  * 自定义异常
  */
 @Data

@@ -1,7 +1,7 @@
 package cn.mmc8102.springboot.common;
 
 /**
- * @author Administrator
+ * @author wangli
  */
 public enum ApiResponseEnum {
 

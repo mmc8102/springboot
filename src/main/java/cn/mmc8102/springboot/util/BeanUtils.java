@@ -11,7 +11,7 @@ import javax.servlet.http.HttpServletRequest;
 
 /**
  * 手动获取各种bean的类
- * @author 16282
+ * @author wangli
  */
 @Component
 public class BeanUtils implements ApplicationContextAware {

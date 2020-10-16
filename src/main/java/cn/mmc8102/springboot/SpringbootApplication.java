@@ -6,7 +6,7 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.cache.annotation.EnableCaching;
 
 /**
- * @author 16282
+ * @author wangli
  */
 @SpringBootApplication
 @MapperScan("cn.mmc8102.springboot.mapper")

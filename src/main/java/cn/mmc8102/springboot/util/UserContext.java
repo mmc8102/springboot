@@ -9,7 +9,7 @@ import javax.servlet.http.HttpSession;
 
 /**
  * 用于存放当前用户的上下文
- * @author 16282
+ * @author wangli
  *
  */
 public class UserContext {

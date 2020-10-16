@@ -6,7 +6,7 @@ import lombok.Data;
 
 /**
  * api接口统一返回格式
- * @author 16282
+ * @author wangli
  */
 @Data
 public class ApiResponse<T>{

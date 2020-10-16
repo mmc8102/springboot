@@ -9,7 +9,7 @@ import org.springframework.stereotype.Component;
 import java.util.Locale;
 
 /**
- * @author 16282
+ * @author wangli
  * 后台调用： 注入i18nService， 直接I18nService.lang(key)即可
  * ErrorCode调用：I18nService.lang(GlobalErrorCodeEnum.COMMON_SUCCESS.getDesc())
  */

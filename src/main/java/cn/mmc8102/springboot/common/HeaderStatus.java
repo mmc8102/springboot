@@ -6,7 +6,7 @@ import lombok.Data;
 import java.io.Serializable;
 
 /**
- * @author 16282
+ * @author wangli
  */
 @Data
 @AllArgsConstructor

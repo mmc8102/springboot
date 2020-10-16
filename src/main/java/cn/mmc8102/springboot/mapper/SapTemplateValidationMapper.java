@@ -4,7 +4,7 @@ import org.apache.ibatis.annotations.Param;
 import org.apache.ibatis.annotations.Select;
 
 /**
- * @Author: wangli28
+ * @Author: wangli
  * @Date: 2020/8/21 10:46
  */
 public interface SapTemplateValidationMapper {

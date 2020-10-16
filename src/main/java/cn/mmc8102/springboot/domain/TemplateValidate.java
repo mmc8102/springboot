@@ -3,7 +3,7 @@ package cn.mmc8102.springboot.domain;
 import lombok.Data;
 
 /**
- * @Author: wangli28
+ * @Author: wangli
  * @Date: 2020/8/21 10:11
  * 配置化验证模板
  */
