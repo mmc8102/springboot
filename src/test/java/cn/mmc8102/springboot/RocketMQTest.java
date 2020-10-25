@@ -37,6 +37,7 @@ public class RocketMQTest {
     public static void main(String[] args) throws MQClientException {
         DefaultMQPushConsumer consumer = new DefaultMQPushConsumer("hello-consumer");
         consumer.setNamesrvAddr("127.0.0.1:9876");
+        //consumer.setMessageModel(MessageModel.CLUSTERING);//默认就是集群
         consumer.subscribe("01-hello","*");
         consumer.registerMessageListener(new MessageListenerConcurrently() {
             @Override
