@@ -3,59 +3,22 @@ package cn.mmc8102.springboot;
 import cn.mmc8102.springboot.domain.Employee;
 import cn.mmc8102.springboot.mapper.SapTemplateValidationMapper;
 import cn.mmc8102.springboot.util.JsonTool;
-import org.apache.rocketmq.client.consumer.DefaultMQPushConsumer;
-import org.apache.rocketmq.client.consumer.listener.ConsumeConcurrentlyContext;
-import org.apache.rocketmq.client.consumer.listener.ConsumeConcurrentlyStatus;
-import org.apache.rocketmq.client.consumer.listener.MessageListenerConcurrently;
-import org.apache.rocketmq.client.exception.MQBrokerException;
-import org.apache.rocketmq.client.exception.MQClientException;
-import org.apache.rocketmq.client.producer.DefaultMQProducer;
-import org.apache.rocketmq.client.producer.SendResult;
-import org.apache.rocketmq.common.message.Message;
-import org.apache.rocketmq.common.message.MessageExt;
-import org.apache.rocketmq.remoting.exception.RemotingException;
 import org.junit.jupiter.api.Test;
+import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.boot.test.context.SpringBootTest;
+import org.springframework.test.context.junit4.SpringRunner;
 
-import java.io.UnsupportedEncodingException;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
-//@SpringBootTest
-//@RunWith(SpringRunner.class)
+@SpringBootTest
+@RunWith(SpringRunner.class)
 class SpringbootApplicationTests {
     @Autowired
     private SapTemplateValidationMapper sapTemplateValidationMapper;
-
-    @Test
-    public void testRocketMQProduct() throws MQClientException, UnsupportedEncodingException, RemotingException, InterruptedException, MQBrokerException {
-        DefaultMQProducer producer = new DefaultMQProducer("hello-producer");
-        producer.setNamesrvAddr("127.0.0.1:9876");
-        producer.setSendMsgTimeout(6000);
-        producer.start();
-        Message message = new Message("01-hello", "hello-recketmq".getBytes("utf-8"));
-        SendResult sendResult = producer.send(message);
-        System.out.println(sendResult.getSendStatus());
-        producer.shutdown();
-    }
-
-    public static void main(String[] args) throws MQClientException {
-        DefaultMQPushConsumer consumer = new DefaultMQPushConsumer("hello-consumer");
-        consumer.setNamesrvAddr("127.0.0.1:9876");
-        consumer.subscribe("01-hello","*");
-        consumer.registerMessageListener(new MessageListenerConcurrently() {
-            @Override
-            public ConsumeConcurrentlyStatus consumeMessage(List<MessageExt> msgs, ConsumeConcurrentlyContext consumeConcurrentlyContext) {
-                for (MessageExt msg : msgs) {
-                    System.out.println("消息内容:" + new String(msg.getBody())+",消息id:"+msg.getMsgId());
-                }
-                return ConsumeConcurrentlyStatus.CONSUME_SUCCESS;
-            }
-        });
-        consumer.start();
-    }
 
     @Test
     void contextLoads() {

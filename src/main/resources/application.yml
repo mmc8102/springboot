@@ -1,10 +1,37 @@
-#spring:
-#  jackson:
-#    #参数意义：
-#    #JsonInclude.Include.ALWAYS              默认
-#    #JsonInclude.Include.NON_DEFAULT     属性为默认值不序列化
-#    #JsonInclude.Include.NON_EMPTY         属性为 空（””） 或者为 NULL 都不序列化
-#    #JsonInclude.Include.NON_NULL           属性为NULL   不序列化
-#    default-property-inclusion: ALWAYS
-#    time-zone: GMT+8
-#    date-format: yyyy-MM-dd HH:mm:ss
+server:
+  port: 8080
+
+spring:
+  datasource:
+    druid:
+      username: root
+      password: admin
+      url: jdbc:mysql:///test?useUnicode=true&useJDBCCompliantTimezoneShift=true&useLegacyDatetimeCode=false&serverTimezone=Asia/Shanghai
+      driver-class-name: com.mysql.cj.jdbc.Driver
+      initial-size: 5
+  redis:
+    host: localhost
+  jackson:
+    time-zone: GMT+8
+    date-format: yyyy-MM-dd HH:mm:ss
+    #    default-property-inclusion: ALWAYS
+    #参数意义：
+    #    #JsonInclude.Include.ALWAYS              默认
+    #    #JsonInclude.Include.NON_DEFAULT     属性为默认值不序列化
+    #    #JsonInclude.Include.NON_EMPTY         属性为 空（””） 或者为 NULL 都不序列化
+    #    #JsonInclude.Include.NON_NULL           属性为NULL   不序列化
+  freemarker:
+    suffix: .ftl
+    #check-template-location: false
+
+mybatis-plus:
+  global-config:
+    db-config:
+      id-type: auto
+
+logging:
+  level:
+    cn.mmc8102: info
+    cn.mmc8102.springboot.mapper: debug
+
+
