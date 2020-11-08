@@ -2,7 +2,6 @@ package cn.mmc8102.springboot.common;
 
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.http.converter.HttpMessageConversionException;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.ExceptionHandler;
 import org.springframework.web.bind.annotation.RestController;
@@ -35,18 +34,17 @@ public class GlobalExceptionHandler {
             responseEnum = ApiResponseEnum.UNKNOW_ERROR;
         }
 
-        ApiResponse apiResponse = new ApiResponse(responseEnum, e.getArgs());
         return new ApiResponse(responseEnum, e.getArgs());
     }
 
     /**
-     * 处理未捕获的Exception
-     * @param e 异常
+     * 处理未捕获的RuntimeException
+     * @param e 运行时异常
      * @return 统一响应体
      */
-    @ExceptionHandler(HttpMessageConversionException.class)
-    public ApiResponse handleException(HttpMessageConversionException e){
-        log.error("handleRuntimeException: happen a message convert exception. ", e);
+    @ExceptionHandler(RuntimeException.class)
+    public ApiResponse handleRuntimeException(RuntimeException e){
+        log.error("handleRuntimeException: happen a RuntimeException. ", e);
         return new ApiResponse(ApiResponseEnum.UNKNOW_ERROR);
     }
 
@@ -58,17 +56,6 @@ public class GlobalExceptionHandler {
     @ExceptionHandler(Exception.class)
     public ApiResponse handleException(Exception e){
         log.error("handleRuntimeException: happen an unknow exception. ", e);
-        return new ApiResponse(ApiResponseEnum.UNKNOW_ERROR);
-    }
-
-    /**
-     * 处理未捕获的RuntimeException
-     * @param e 运行时异常
-     * @return 统一响应体
-     */
-    @ExceptionHandler(RuntimeException.class)
-    public ApiResponse handleRuntimeException(RuntimeException e){
-        log.error("handleRuntimeException: happen a RuntimeException. ", e);
         return new ApiResponse(ApiResponseEnum.UNKNOW_ERROR);
     }
 
