@@ -34,7 +34,7 @@
         <param name="model" basePackageName="domain">*.java</param>
         <param name="dao" basePackageName="mapper">*Mapper.java</param>
         <param name="mapper" basePackageName="mapper">*Mapper.xml</param>
-        <param name="service" basePackageName="service">*Service.java</param>
+        <param name="service" basePackageName="service">I*Service.java</param>
         <param name="serviceImpl" basePackageName="service.impl">*ServiceImpl.java</param>
         <param name="controller" basePackageName="web.controller">*Controller.java</param>
     </ftl>

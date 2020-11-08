@@ -1,6 +1,8 @@
 package ${basePackageMap['model'].packageName};
 
 import lombok.Data;
+import lombok.Builder;
+import lombok.NoArgsConstructor;
 
 /**
 * ${tableComment!}
@@ -8,6 +10,8 @@ import lombok.Data;
 * @date ${.now?string("yyyy-MM-dd HH:mm:ss")}
 **/
 @Data
+@Builder
+@NoArgsConstructor
 public class ${basePackageMap['model'].className} {
 
     <#list entityAttrs as ea>
