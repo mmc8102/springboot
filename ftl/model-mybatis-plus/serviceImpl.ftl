@@ -1,7 +1,7 @@
 package ${basePackageMap['serviceImpl'].packageName};
 
 import ${basePackageMap['dao'].packageName}.${basePackageMap['dao'].className};
-import ${basePackageMap['service'].packageName};
+import ${basePackageMap['service'].packageName}.${basePackageMap['service'].className};
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 

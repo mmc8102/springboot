@@ -12,7 +12,7 @@ public enum ApiResponseEnum {
 
     ERROR(999, "系统异常", "system.error"),
 
-    UN_LOGIN_ERROR(402, "", "system.unlogin.error"),
+    UN_LOGIN_ERROR(401, "", "system.unlogin.error"),
 
     UNKNOW_ERROR(500, "", "response.unknow.error"),
 
@@ -20,6 +20,7 @@ public enum ApiResponseEnum {
     PARAM_EXCEPTION(502, "参数异常", "param.error"),
     NO_ACCESS_OPERATE(503, "无权操作", "no.access.operate"),
     INTERFACE_FAIL(504, "接口调用失败:{0}", "interface.fail"),
+    EXCEPTION(505, "", "exception"),
 
     /**
      * member相关API返回,code范围是[1000,1999]

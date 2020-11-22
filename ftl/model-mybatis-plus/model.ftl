@@ -3,6 +3,7 @@ package ${basePackageMap['model'].packageName};
 import lombok.Data;
 import lombok.Builder;
 import lombok.NoArgsConstructor;
+import lombok.AllArgsConstructor;
 
 /**
 * ${tableComment!}
@@ -12,6 +13,7 @@ import lombok.NoArgsConstructor;
 @Data
 @Builder
 @NoArgsConstructor
+@AllArgsConstructor
 public class ${basePackageMap['model'].className} {
 
     <#list entityAttrs as ea>
