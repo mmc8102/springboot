@@ -11,7 +11,9 @@ public class Constant {
 	 */
 	public static final String DEFAULT_ADMIN_USERNAME = "admin";
 	public static final String DEFAULT_ADMIN_PASSWORD = "admin";
-	
+	public static final String DEFAULT_ENV_DEV = "dev";
+	public static final String DEFAULT_ENV_TEST = "test";
+
 	/**
 	 * 验证码有效时间
 	 */

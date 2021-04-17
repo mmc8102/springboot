@@ -44,7 +44,7 @@ public class ApiResponse<T>{
         this.header = new HeaderStatus(apiResponseEnum.getCode(), i18nService.lang(apiResponseEnum.getKey(),apiResponseEnum.getStatement()));
     }
 
-    public ApiResponse(ApiResponseEnum apiResponseEnum, Object[] args) {
+    public ApiResponse(ApiResponseEnum apiResponseEnum, Object... args) {
         if(i18nService == null){
             i18nService = BeanUtils.getBean(I18nService.class);
         }
