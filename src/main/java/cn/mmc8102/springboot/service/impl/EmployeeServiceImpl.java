@@ -47,7 +47,7 @@ public class EmployeeServiceImpl implements IEmployeeService {
     }
     
     @Override
-    @Cacheable(value = "employee", key = "#id")
+    @Cacheable(value = "employee#60", key = "#id", sync = true, unless = "#result == null", condition = "#id > 0")
     public Employee get(Long id) {
         return this.employeeMapper.queryById(id);
     }
