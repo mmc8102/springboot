@@ -1,9 +1,11 @@
 package cn.mmc8102.springboot.config;
 
+import cn.mmc8102.springboot.web.filter.LogIdFilter;
 import com.fasterxml.jackson.annotation.JsonAutoDetect;
 import com.fasterxml.jackson.annotation.PropertyAccessor;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import lombok.extern.slf4j.Slf4j;
+import org.springframework.boot.web.servlet.FilterRegistrationBean;
 import org.springframework.context.MessageSource;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
@@ -22,6 +24,25 @@ import org.springframework.data.redis.serializer.RedisSerializationContext;
 @Configuration
 @Slf4j
 public class BeanConfig {
+
+    public static final int FILTER_PRIORITY_HIGHEST = 0;
+    public static final int FILTER_PRIORITY_HIGH = 2;
+    public static final int FILTER_PRIORITY_NORMAL = 3;
+    public static final int FILTER_PRIORITY_LEVEL1 = 4;
+
+    /**
+     * 过滤打印请求日志
+     * @return
+     */
+    @Bean
+    public FilterRegistrationBean logIdFilter() {
+        FilterRegistrationBean registration = new FilterRegistrationBean();
+        registration.setFilter(new LogIdFilter());
+        registration.addUrlPatterns("/*");
+        registration.setName("logIdFilter");
+        registration.setOrder(FILTER_PRIORITY_HIGHEST);
+        return registration;
+    }
 
     /**
      * 国际化
@@ -54,4 +75,5 @@ public class BeanConfig {
         //defaultCacheConfig = defaultCacheConfig.entryTtl(Duration.ofDays(1));
         return new CustomRedisCacheManager(redisCacheWriter, defaultCacheConfig);
     }
+
 }
