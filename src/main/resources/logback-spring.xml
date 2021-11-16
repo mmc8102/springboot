@@ -1,0 +1,84 @@
+<configuration>
+    <!-- 替换数据的类，在mi-b2b项目中，使用前，先引入mi-b2b项目 -->
+    <conversionRule conversionWord="replaceAndParse" converterClass="com.xiaomi.sales.crm.crmspringcore.config.log.ReplacingAndParsingCompositeConverter" />
+    <!-- 日志在consol中输出的颜色配置，可以有也可以不配置，在mi-grpc中有颜色相关的，需要配置上 -->
+    <conversionRule conversionWord="clr" converterClass="org.springframework.boot.logging.logback.ColorConverter"/>
+    <conversionRule conversionWord="wex" converterClass="org.springframework.boot.logging.logback.WhitespaceThrowableProxyConverter"/>
+    <conversionRule conversionWord="wEx" converterClass="org.springframework.boot.logging.logback.ExtendedWhitespaceThrowableProxyConverter"/>
+
+    <!-- 配置spring的变量，下面要使用的时候，通过 ${name} 来使用 -->
+    <springProperty scope="context" name="LOG_HOME" source="log.path" defaultValue="logs"/>
+    <!--    <springProperty scope="context" name="LOG_NAME" source="log.file-name" defaultValue="saic"/>-->
+
+
+    <!-- 引入IP这个变量，IP获取方式，通过mi-b2b项目里面的LogIpConfig类获取 -->
+    <conversionRule conversionWord="ip" converterClass="com.xiaomi.sales.crm.crmspringcore.config.filter.LogIpConfig" />
+    <!-- 以下两个配置是用来输出error信息的时候，将error信息打成一行显示，方便排查日志，也可以不配置 -->
+    <!--    <conversionRule conversionWord="emsg" converterClass="com.xiaomi.newretail.common.logger.neo.ExLogMessageConverter" />-->
+    <!--    <conversionRule conversionWord="omsg" converterClass="com.xiaomi.newretail.common.logger.neo.OneLineLogMessageConverter" />-->
+
+    <!-- 保留的归档文件的最大数量 -->
+    <property name="max.history" value="3"/>
+    <!-- consol的输出格式，可以配置颜色，例如%yellow -->
+    <property name="out.pattern.console" value="%yellow([%d{yyyy-MM-dd HH:mm:ss.SSS}]) %cyan([${HOSTNAME}]) %cyan([%ip]) %highlight([%p]) %cyan([%X{MDC_TRACE_ID}]) %green(%thread) %boldMagenta(%logger{36}:%line) - %msg%n " />
+    <!-- log的输出变量信息，例如: %logger{36}等，可以通过查询logback的变量来了解具体配置项 -->
+    <property name="out.pattern.file" value="[%d{yyyy-MM-dd HH:mm:ss.SSS}] [${HOSTNAME}] [%ip] [%p] [%X{MDC_TRACE_ID}] %thread %logger{36}:%line" />
+
+    <appender name="stdout" class="ch.qos.logback.core.ConsoleAppender">
+        <encoder>
+            <charset>utf-8</charset>
+            <Pattern>[%d{yyyy-MM-dd HH:mm:ss.SSS}] [${HOSTNAME}] [%ip] [%p] [%X{xmLogId}] %logger{36}:%line %msg%n%replaceAndParse(%xException){"(.+)", "[%d{yyyy-MM-dd HH:mm:ss.SSS}] [${HOSTNAME}] [] [%p] [%X{xmLogId}] $1"}%nopex</Pattern>
+        </encoder>
+    </appender>
+
+    <!-- 滚动记录文件，先将日志记录到指定文件，当符合某个条件时，将日志记录到其他文件 -->
+    <appender name="file"
+              class="ch.qos.logback.core.rolling.RollingFileAppender">
+        <File>${LOG_HOME}/server.log</File>
+        <encoder>
+            <Pattern>[%d{yyyy-MM-dd HH:mm:ss.SSS}] [${HOSTNAME}] [%ip] [%p] [%X{xmLogId}] %logger{36}:%line %msg%n%replaceAndParse(%xException){"(.+)", "[%d{yyyy-MM-dd HH:mm:ss.SSS}] [${HOSTNAME}] [] [%p] [%X{xmLogId}] $1"}%nopex</Pattern>
+            <charset>UTF-8</charset>
+        </encoder>
+
+        <rollingPolicy class="ch.qos.logback.core.rolling.TimeBasedRollingPolicy">
+            <FileNamePattern>${LOG_HOME}/server.log.%d{yyyy-MM-dd-HH}</FileNamePattern>
+            <maxHistory>${max.history}</maxHistory>
+        </rollingPolicy>
+    </appender>
+    <!--    <appender name="file" class="ch.qos.logback.core.rolling.RollingFileAppender">
+            <encoder>
+                <Pattern>${out.pattern.file}</Pattern>
+                <charset>UTF-8</charset>
+            </encoder>
+            <rollingPolicy class="ch.qos.logback.core.rolling.TimeBasedRollingPolicy">
+                &lt;!&ndash; ../log前的路径，是linux容器中，文件路径，线上、预发和测试环境上的路径，跟本地的路径可以用不同的路径，日志搜集平台则是通过这个路径搜集日志 &ndash;&gt;
+                <fileNamePattern>${LOG_HOME}/log.%d{yyyy-MM-dd}.log</fileNamePattern>
+                <maxHistory>${max.history}</maxHistory>
+            </rollingPolicy>
+        </appender>-->
+
+    <!-- 配置日志写入文件的缓冲区和队列信息，可以不配置，使用默认的配置 -->
+    <appender name="ASYNCFILE" class="ch.qos.logback.classic.AsyncAppender">
+        <queueSize>512</queueSize>
+        <discardingThreshold>0</discardingThreshold>
+        <neverBlock>true</neverBlock>
+        <appender-ref ref="file" />
+    </appender>
+
+
+    <!-- 可自定义不同路径下，日志输出的等级，也可不配置，会以下面的root配置来设置等级 -->
+    <logger name="com.apache.ibatis" level="DEBUG"/>
+    <logger name="java.sql.Connection" level="DEBUG"/>
+    <logger name="java.sql.Statement" level="DEBUG"/>
+    <logger name="java.sql.PreparedStatement" level="DEBUG"/>
+    <logger name="com.baomidou.example.mapper" level="DEBUG"/>
+    <logger name="com.alibaba.nacos.client.config.impl" level="WARN"/>
+
+    <!-- 默认日志等级配置 -->
+    <root>
+        <level value="info" />
+        <appender-ref ref="stdout" />
+        <appender-ref ref="file" />
+        <appender-ref ref="ASYNCFILE"/>
+    </root>
+</configuration>
