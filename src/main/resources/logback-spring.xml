@@ -1,6 +1,6 @@
 <configuration>
     <!-- 替换数据的类，在mi-b2b项目中，使用前，先引入mi-b2b项目 -->
-    <conversionRule conversionWord="replaceAndParse" converterClass="com.xiaomi.sales.crm.crmspringcore.config.log.ReplacingAndParsingCompositeConverter" />
+    <!--<conversionRule conversionWord="replaceAndParse" converterClass="com.xiaomi.sales.crm.crmspringcore.config.log.ReplacingAndParsingCompositeConverter" />-->
     <!-- 日志在consol中输出的颜色配置，可以有也可以不配置，在mi-grpc中有颜色相关的，需要配置上 -->
     <conversionRule conversionWord="clr" converterClass="org.springframework.boot.logging.logback.ColorConverter"/>
     <conversionRule conversionWord="wex" converterClass="org.springframework.boot.logging.logback.WhitespaceThrowableProxyConverter"/>
