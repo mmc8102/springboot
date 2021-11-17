@@ -1,6 +1,6 @@
 <configuration>
     <!-- 替换数据的类，在mi-b2b项目中，使用前，先引入mi-b2b项目 -->
-    <!--<conversionRule conversionWord="replaceAndParse" converterClass="com.xiaomi.sales.crm.crmspringcore.config.log.ReplacingAndParsingCompositeConverter" />-->
+<!--    <conversionRule conversionWord="replaceAndParse" converterClass="com.xiaomi.sales.crm.crmspringcore.config.log.ReplacingAndParsingCompositeConverter" />-->
     <!-- 日志在consol中输出的颜色配置，可以有也可以不配置，在mi-grpc中有颜色相关的，需要配置上 -->
     <conversionRule conversionWord="clr" converterClass="org.springframework.boot.logging.logback.ColorConverter"/>
     <conversionRule conversionWord="wex" converterClass="org.springframework.boot.logging.logback.WhitespaceThrowableProxyConverter"/>
@@ -12,7 +12,7 @@
 
 
     <!-- 引入IP这个变量，IP获取方式，通过mi-b2b项目里面的LogIpConfig类获取 -->
-    <conversionRule conversionWord="ip" converterClass="com.xiaomi.sales.crm.crmspringcore.config.filter.LogIpConfig" />
+    <conversionRule conversionWord="ip" converterClass="cn.mmc8102.springboot.web.filter.LogIpConfig" />
     <!-- 以下两个配置是用来输出error信息的时候，将error信息打成一行显示，方便排查日志，也可以不配置 -->
     <!--    <conversionRule conversionWord="emsg" converterClass="com.xiaomi.newretail.common.logger.neo.ExLogMessageConverter" />-->
     <!--    <conversionRule conversionWord="omsg" converterClass="com.xiaomi.newretail.common.logger.neo.OneLineLogMessageConverter" />-->
@@ -27,7 +27,8 @@
     <appender name="stdout" class="ch.qos.logback.core.ConsoleAppender">
         <encoder>
             <charset>utf-8</charset>
-            <Pattern>[%d{yyyy-MM-dd HH:mm:ss.SSS}] [${HOSTNAME}] [%ip] [%p] [%X{xmLogId}] %logger{36}:%line %msg%n%replaceAndParse(%xException){"(.+)", "[%d{yyyy-MM-dd HH:mm:ss.SSS}] [${HOSTNAME}] [] [%p] [%X{xmLogId}] $1"}%nopex</Pattern>
+            <!--            <Pattern>[%d{yyyy-MM-dd HH:mm:ss.SSS}] [${HOSTNAME}] [%ip] [%p] [%X{xmLogId}] %logger{36}:%line %msg%n%replaceAndParse(%xException){"(.+)", "[%d{yyyy-MM-dd HH:mm:ss.SSS}] [${HOSTNAME}] [] [%p] [%X{xmLogId}] $1"}%nopex</Pattern>-->
+            <Pattern>${out.pattern.console}</Pattern>
         </encoder>
     </appender>
 
@@ -36,7 +37,8 @@
               class="ch.qos.logback.core.rolling.RollingFileAppender">
         <File>${LOG_HOME}/server.log</File>
         <encoder>
-            <Pattern>[%d{yyyy-MM-dd HH:mm:ss.SSS}] [${HOSTNAME}] [%ip] [%p] [%X{xmLogId}] %logger{36}:%line %msg%n%replaceAndParse(%xException){"(.+)", "[%d{yyyy-MM-dd HH:mm:ss.SSS}] [${HOSTNAME}] [] [%p] [%X{xmLogId}] $1"}%nopex</Pattern>
+            <!--            <Pattern>[%d{yyyy-MM-dd HH:mm:ss.SSS}] [${HOSTNAME}] [%ip] [%p] [%X{xmLogId}] %logger{36}:%line %msg%n%replaceAndParse(%xException){"(.+)", "[%d{yyyy-MM-dd HH:mm:ss.SSS}] [${HOSTNAME}] [] [%p] [%X{xmLogId}] $1"}%nopex</Pattern>-->
+            <Pattern>%d|%-5level|%X{MDC_TRACE_ID}|%thread|%logger{40}|%msg%n</Pattern>
             <charset>UTF-8</charset>
         </encoder>
 
