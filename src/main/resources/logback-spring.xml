@@ -43,7 +43,7 @@
         </encoder>
 
         <rollingPolicy class="ch.qos.logback.core.rolling.TimeBasedRollingPolicy">
-            <FileNamePattern>${LOG_HOME}/server.log.%d{yyyy-MM-dd-HH}</FileNamePattern>
+            <FileNamePattern>${LOG_HOME}/server.log.%d{yyyy-MM-dd}</FileNamePattern>
             <maxHistory>${max.history}</maxHistory>
         </rollingPolicy>
     </appender>
@@ -80,7 +80,6 @@
     <root>
         <level value="info" />
         <appender-ref ref="stdout" />
-        <appender-ref ref="file" />
         <appender-ref ref="ASYNCFILE"/>
     </root>
 </configuration>
