@@ -5,6 +5,7 @@ import org.springframework.web.context.request.RequestContextHolder;
 import org.springframework.web.context.request.ServletRequestAttributes;
 
 import javax.servlet.http.HttpSession;
+import java.util.List;
 
 
 /**
@@ -13,25 +14,35 @@ import javax.servlet.http.HttpSession;
  *
  */
 public class UserContext {
-	public static final String USER_IN_SESSION = "logininfo";
-	public static final String VERIFYCODE_IN_SESSION = "verifycode_in_session";
+	public static final String USER_ID_IN_SESSION = "userId";
+	public static final String ACCESS_TOKEN_SESSION = "userId";
+	private static final ThreadLocal<String> USER_ID_THREADLOCAL = new ThreadLocal<>();
+	private static final ThreadLocal<String> ACCESS_TOKEN_THREADLOCAL = new ThreadLocal<>();
 
-	private UserContext() {}
-	
+	private UserContext() {
+	}
+
 	public static HttpSession getSession() {
-		return ((ServletRequestAttributes)RequestContextHolder.getRequestAttributes()).getRequest().getSession();
+		return ((ServletRequestAttributes) RequestContextHolder.getRequestAttributes()).getRequest().getSession();
 	}
-	
-	public static void setCurrent(Employee current) {
-		if(current == null) {
-			getSession().invalidate();
-		}else {
-			getSession().setAttribute(USER_IN_SESSION, current);
-		}
+
+	public static void setUserId(String userId) {
+		//getSession().setAttribute(USER_ID_IN_SESSION, userId);
+		USER_ID_THREADLOCAL.set(userId);
 	}
-	
-	public static Employee getCurrent() {
-		return (Employee) getSession().getAttribute(USER_IN_SESSION);
+
+	public static String getUserId() {
+		return USER_ID_THREADLOCAL.get();
+	}
+
+	public static void setAccessToken(String accessToken) {
+		//getSession().setAttribute(ACCESS_TOKEN_SESSION, accessToken);
+		ACCESS_TOKEN_THREADLOCAL.set(accessToken);
+	}
+
+	public static String getAccessToken() {
+		//return (String) getSession().getAttribute(ACCESS_TOKEN_SESSION);
+		return ACCESS_TOKEN_THREADLOCAL.get();
 	}
 	
 }

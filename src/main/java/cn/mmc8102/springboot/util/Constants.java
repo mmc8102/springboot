@@ -5,7 +5,7 @@ package cn.mmc8102.springboot.util;
  * @author wangli
  *
  */
-public class Constant {
+public class Constants {
 	/**
 	 * 默认管理员的用户名和密码
 	 */

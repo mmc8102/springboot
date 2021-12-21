@@ -1,6 +1,6 @@
 package cn.mmc8102.springboot.common;
 
-import cn.mmc8102.springboot.util.Constant;
+import cn.mmc8102.springboot.util.Constants;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.web.bind.MethodArgumentNotValidException;
@@ -71,7 +71,7 @@ public class GlobalExceptionHandler {
     @ExceptionHandler(Exception.class)
     public ApiResponse handleException(Exception e){
         log.error(e.getMessage(), e);
-        if (Constant.DEFAULT_ENV_DEV.equals(env) || Constant.DEFAULT_ENV_TEST.equals(env)) {
+        if (Constants.DEFAULT_ENV_DEV.equals(env) || Constants.DEFAULT_ENV_TEST.equals(env)) {
             return new ApiResponse<>(ApiResponseEnum.OPERATE_EXCEPTION, e.getMessage());
         }
         return new ApiResponse(ApiResponseEnum.UNKNOW_ERROR);

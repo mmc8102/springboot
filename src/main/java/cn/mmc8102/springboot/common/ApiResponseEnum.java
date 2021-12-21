@@ -14,6 +14,7 @@ public enum ApiResponseEnum {
 
     NON_EXISTENT_LOGIN_INFO(401, "未从网关获取到登录信息", "non.existent.login.info"),
     UN_LOGIN_ERROR(402, "", "system.unlogin.error"),
+    PARAMS_ILLEGAL(403, "param {0} illegal", "param {0} illegal"),
 
     UNKNOW_ERROR(500, "", "response.unknow.error"),
 
