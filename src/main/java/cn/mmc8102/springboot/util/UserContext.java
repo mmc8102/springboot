@@ -1,17 +1,14 @@
 package cn.mmc8102.springboot.util;
 
-import cn.mmc8102.springboot.domain.Employee;
 import org.springframework.web.context.request.RequestContextHolder;
 import org.springframework.web.context.request.ServletRequestAttributes;
 
 import javax.servlet.http.HttpSession;
-import java.util.List;
 
 
 /**
  * 用于存放当前用户的上下文
  * @author wangli
- *
  */
 public class UserContext {
 	public static final String USER_ID_IN_SESSION = "userId";
@@ -43,6 +40,15 @@ public class UserContext {
 	public static String getAccessToken() {
 		//return (String) getSession().getAttribute(ACCESS_TOKEN_SESSION);
 		return ACCESS_TOKEN_THREADLOCAL.get();
+	}
+
+
+	/**
+	 * 清除所有设置的threadlocal
+	 */
+	public static void removeAll(){
+		USER_ID_THREADLOCAL.remove();
+		ACCESS_TOKEN_THREADLOCAL.remove();
 	}
 	
 }

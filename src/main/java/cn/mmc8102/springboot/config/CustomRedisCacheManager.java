@@ -20,10 +20,10 @@ public class CustomRedisCacheManager extends RedisCacheManager {
     protected RedisCache createRedisCache(String name, RedisCacheConfiguration cacheConfig) {
         //名称中存在#标记进行到期时间配置
         if (StringUtils.isNotBlank(name) && name.contains(DEFAULT_SPEL)) {
-            String[] SPEL = name.split(DEFAULT_SPEL);
-            if (StringUtils.isNumeric(SPEL[1])) {
+            String[] spel = name.split(DEFAULT_SPEL);
+            if (StringUtils.isNumeric(spel[1])) {
                 //配置缓存有效时间 单位默认秒
-                return super.createRedisCache(SPEL[0], cacheConfig.entryTtl(Duration.ofSeconds(Integer.valueOf(SPEL[1]))));
+                return super.createRedisCache(spel[0], cacheConfig.entryTtl(Duration.ofSeconds(Integer.valueOf(spel[1]))));
             }
         }
         return super.createRedisCache(name, cacheConfig);
