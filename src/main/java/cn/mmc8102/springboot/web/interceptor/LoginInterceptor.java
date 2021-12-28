@@ -16,9 +16,9 @@ import javax.servlet.http.HttpServletResponse;
  */
 @Slf4j
 @Component
-public class MiniCodeLoginInterceptor implements HandlerInterceptor {
+public class LoginInterceptor implements HandlerInterceptor {
 
-    public MiniCodeLoginInterceptor() {
+    public LoginInterceptor() {
     }
 
     @Override
