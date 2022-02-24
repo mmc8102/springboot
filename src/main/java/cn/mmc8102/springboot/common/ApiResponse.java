@@ -3,12 +3,14 @@ package cn.mmc8102.springboot.common;
 import cn.mmc8102.springboot.util.BeanUtils;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import lombok.Data;
+import lombok.experimental.Accessors;
 
 /**
  * api接口统一返回格式
  * @author wangli
  */
 @Data
+@Accessors(chain = true)
 public class ApiResponse<T>{
 
     private HeaderStatus header = HeaderStatus.SUCCESS;
