@@ -1,6 +1,6 @@
 package cn.mmc8102.springboot.common;
 
-import cn.mmc8102.springboot.util.BeanUtils;
+import cn.mmc8102.springboot.utils.BeanUtils;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import lombok.Data;
 import lombok.experimental.Accessors;

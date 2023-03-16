@@ -1,4 +1,4 @@
-package cn.mmc8102.springboot.util;
+package cn.mmc8102.springboot.common;
 
 /**
  * 系统中的常量

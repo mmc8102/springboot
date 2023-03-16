@@ -2,7 +2,7 @@ package cn.mmc8102.springboot;
 
 import cn.mmc8102.springboot.domain.Employee;
 import cn.mmc8102.springboot.mapper.SapTemplateValidationMapper;
-import cn.mmc8102.springboot.util.JsonTool;
+import cn.mmc8102.springboot.utils.JsonTool;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 

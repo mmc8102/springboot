@@ -1,4 +1,4 @@
-package cn.mmc8102.springboot.util;
+package cn.mmc8102.springboot.utils;
 
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.core.type.TypeReference;

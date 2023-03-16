@@ -3,3 +3,40 @@
 * 提供了常用工具类JsonTool MD5 UserContext ApiResponse统一响应支持国际化 自定义业务异常 全局异常处理 以及Xss注入攻击拦截器
 * 整合了mybatis-plus druid redis spring-cache commons-lang3 gson freemarker rocketmq hutool等常用组件
 
+
+# 常用工具 #
+
+### 微服务 ###
+* springcloud-alibaba: Spring Cloud Alibaba 致力于提供微服务开发的一站式解决方案。此项目包含开发分布式应用微服务的必需组件，方便开发者通过 Spring Cloud 编程模型轻松使用这些组件来开发分布式应用服务。
+* 包含 Nacos Sentinel Gateway OpenFeign Dubbo RocketMQ Seata OSS SchedulerX SMS等
+* github: https://github.com/alibaba/spring-cloud-alibaba
+
+
+### json相关 ###
+* fastjson2 性能远超过其他流行JSON库 fastjson相当于fastjson2的76.07% ;jackson则只相当于fastjson2的39.15%; gson是fastjson2的33.18%，也就是说这个最常见的反序列化场景，fastjson2的性能差不多是jackson/gson的三倍     
+* github: https://github.com/alibaba/fastjson2
+
+### JsonSchema ###
+* 中后台「表单/表格/图表」开箱即用解决方案 通过组件拖拽生成jsonschema 并能通过schema渲染自定义表单
+* XRender: https://xrender.fun/form-render
+* jsonschema校验相关博客：http://events.jianshu.io/p/b6310ea2c450
+* 
+### MySQL binlog 增量订阅&消费组件 ###
+* canal
+* github: https://github.com/alibaba/canal
+
+### LowCodeEngine ###
+* 一套面向扩展设计的企业级低代码技术体系
+* github: https://github.com/alibaba/lowcode-engine
+
+### 数据库连接池 ###
+* Druid: Druid是Java语言中最好的数据库连接池。Druid能够提供强大的监控和扩展功能。
+* github: https://github.com/alibaba/druid
+
+### 规则引擎 ###
+* QLExpress: 由阿里的电商业务规则、表达式（布尔组合）、特殊数学公式计算（高精度）、语法分析、脚本二次定制等强需求而设计的一门动态脚本引擎解析工具.
+* github: https://github.com/alibaba/QLExpress
+
+### 诊断工具 ###
+* Arthas: 诊断神器 在线排查问题 定位方法耗时 无需重启 动态跟踪Java代码 实时监控JVM状态。
+* github: https://github.com/alibaba/arthas

@@ -2,7 +2,7 @@ package cn.mmc8102.springboot.web.interceptor;
 
 import cn.mmc8102.springboot.common.ApiResponse;
 import cn.mmc8102.springboot.common.ApiResponseEnum;
-import cn.mmc8102.springboot.util.FilterUtil;
+import cn.mmc8102.springboot.utils.FilterUtil;
 import org.apache.commons.lang3.StringUtils;
 import org.springframework.stereotype.Component;
 import org.springframework.web.servlet.HandlerInterceptor;

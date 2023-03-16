@@ -1,6 +1,5 @@
 package cn.mmc8102.springboot.common;
 
-import cn.mmc8102.springboot.util.Constants;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.validation.BindException;

@@ -1,4 +1,4 @@
-package cn.mmc8102.springboot.util;
+package cn.mmc8102.springboot.utils;
 
 public class MD5 {
 	static final int S11 = 7;

@@ -1,4 +1,4 @@
-package cn.mmc8102.springboot.util;
+package cn.mmc8102.springboot.utils;
 
 import org.springframework.web.context.request.RequestContextHolder;
 import org.springframework.web.context.request.ServletRequestAttributes;

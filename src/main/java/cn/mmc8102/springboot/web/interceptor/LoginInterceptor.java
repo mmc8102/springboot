@@ -1,6 +1,6 @@
 package cn.mmc8102.springboot.web.interceptor;
 
-import cn.mmc8102.springboot.util.UserContext;
+import cn.mmc8102.springboot.utils.UserContext;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Component;
 import org.springframework.web.servlet.HandlerInterceptor;

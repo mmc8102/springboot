@@ -1,6 +1,6 @@
 package cn.mmc8102.springboot.common;
 
-import cn.mmc8102.springboot.util.BeanUtils;
+import cn.mmc8102.springboot.utils.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.MessageSource;
 import org.springframework.context.i18n.LocaleContextHolder;

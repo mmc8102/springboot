@@ -1,4 +1,4 @@
-package cn.mmc8102.springboot.util;
+package cn.mmc8102.springboot.utils;
 
 import cn.mmc8102.springboot.common.ApiResponse;
 import lombok.extern.slf4j.Slf4j;

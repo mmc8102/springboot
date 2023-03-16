@@ -1,4 +1,4 @@
-package cn.mmc8102.springboot.util;
+package cn.mmc8102.springboot.utils;
 
 import org.springframework.beans.BeansException;
 import org.springframework.beans.factory.BeanFactory;
