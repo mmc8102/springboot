@@ -23,6 +23,7 @@ public class Constants {
 	 * 验证邮箱有效期
 	 */
 	public static final long VERIFYEMAIL_VAILDATE_DAY = 5;
+	public static final Integer THOUSAND = 1000;
 
 
 }
